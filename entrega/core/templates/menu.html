@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block css %}
+<style>
+    .tag-btn {
+        border-color: transparent;
+        background-color: transparent;
+    }
+    .ingredient-row {
+        display: inline-flex;
+        margin-left: 10px;
+    }
+    #ingredient {
+        color: #888291;
+    }
+    #price {
+        text-align: center;
+        {#margin-top: 10px;#}
+    }
+    .product-btn {
+        background-color: #FF7336;
+        color: #F8F9FA !important;
+        text-underline-color: transparent;
+        border-radius: 30px;
+        padding: 10px 25px !important;
+        box-shadow: 3px 3px 5px #777;
+        width: 100px;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .product-btn:hover {
+        background: #F9969E;
+        box-shadow: none;
+    }
+    .menu-nav {
+        background: transparent;
+    }
+    .menu_nav a {
+        margin-right: 50px;
+    }
+</style>
+{% endblock %}
+
+{%  block content %}
+    <section>
+    <br>
+    <h1 style="text-align: center">MENU</h1>
+    <nav class="navbar navbar-expand-lg navbar-light menu_nav">
+        <div class="collapse navbar-collapse ml-5 justify-content-center">
+            <ul class="navbar-nav">
+               {% for section in sections %} {# filter.qs #}
+                  <a href="{% url 'section' %}?id={{ section.id }}">{{ section.name }}</a>
+               {% endfor %}
+            </ul>
+        </div>
+    </nav>
+    </section>
+
+    <section id="product list">
+        {% include 'includes/product_list.html' %}
+    </section>
+
+{%  endblock content %}

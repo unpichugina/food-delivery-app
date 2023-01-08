@@ -1,28 +1,23 @@
-<html>
-    <head>
-        <title>Entrega</title>
-    </head>
-    <body>
-        <table class="table">
+{% extends 'base.html' %}
+
+{%  block content %}
+    <table class="table">
         <tr>
             <td>Login</td>
-            <td>{{ object.username }}</td>
-{#            <td>{{ user.username }}</td>#}
+            <td>{{ user.username }}</td>
         </tr>
         <tr>
             <td>Email</td>
-            <td>{{ object.email }}</td>
-{#            <td>{{ user.email }}</td>#}
+            <td>{{ user.email }}</td>
         </tr>
         <tr>
             <td>Phone</td>
-{#            <td>{{ user.profile.phone }}</td>#}
+            <td>{{ user.phone }}</td>
          </tr>
          <tr>
             <td>Address</td>
-{#            <td>{{ user.profile.address }}</td>#}
+            <td>{{ user.address }}</td>
         </tr>
     </table>
-    </body>
-</html>
+{%  endblock content %}
 

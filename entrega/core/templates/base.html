@@ -1,78 +1,138 @@
-{% load study_group_tags %}
+<!doctype html>
+<html lang="en">
+  <head>
+      {% block css %}{% endblock css %}
+      <style>
+          #logo {
+              margin-left: 40px;
+              margin-top: -5px;
+              margin-bottom: -6px;
+          }
+          #logo:hover {
+              border-bottom: 2px solid transparent;
+          }
+          #navbarNavDropdown {
+              margin-right: 40px;
+          }
+          .my_nav a {
+              margin-left: 30px;
+              border-bottom: 2px solid transparent;
+          }
+          .my_nav a:hover {
+              border-bottom: 2px solid #FF7336;
+          }
+          .active a {
+              border-bottom: 2px solid #FF7336;
+          }
+          .mrt a {
+              background: #FF7336;
+              color: #F8F9FA !important;
+              border-radius: 30px;
+              padding: 10px 25px !important;
+              box-shadow: 3px 3px 5px #777;
+              width: 100px;
+              text-align: center;
+          }
+          .mrt a:hover {
+              background: #F9969E;
+              box-shadow: none;
+          }
+          .mrt2 a {
+              background: #F9969E;
+              color: #F8F9FA !important;
+              border-radius: 30px;
+              padding: 10px 25px !important;
+              box-shadow: 3px 3px 5px #777;
+              width: 130px;
+              text-align: center;
+          }
+          .mrt2 a:hover {
+              background: #FF7336;
+              box-shadow: none;
+          }
 
-<html>
-    <head>
-        <title>Welcome to the University base!</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-        {% block css %}{% endblock css %}
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="/media/university_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            University
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+      </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-{#              <li class="nav-item">#}
-{#                <a class="nav-link" href="#">Link</a>#}
-{#              </li>#}
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                  Faculties
-                </a>
-                <div class="dropdown-menu">
-                    {% for faculty in faculties %}
-                      <a class="dropdown-item" href="{% url 'faculty' %}?id={{ faculty.id }}">{{ faculty.name }}  <span class="badge badge badge-secondary">{{ faculty.course_count }}</span></a>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+{#    <link rel="stylesheet" href="custom.css">#}
+
+    <title>Entrega</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light my_nav">
+      <a class="navbar-brand" id="logo" href="{% url 'home' %}">
+        <img src="/media/entrega.png" width="257" height="83" class="d-inline-block align-top" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse ml-5" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Cuisines
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <div class="dropdown-menu">
+                    {% for category in categories %}
+                      <a class="dropdown-item" href="{% url 'category' %}?id={{ category.id }}">{{ category.name }}</a>
                     {% endfor %}
-{#                  <div class="dropdown-divider"></div>#}
-{#                  <a class="dropdown-item" href="#">Something else here</a>#}
                 </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Delivery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Payment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+        <div class="mrt2 ml-auto mr-5">
+            <ul class="navbar-nav">
+              {%  if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="#">Cart</a>
               </li>
               <li class="nav-item">
-{#              <li class="nav-item">#}
-{#                <a class="nav-link" href="{% url 'review:review' %}">Students</a>#}
-{#              </li>#}
-{#              {% if user.is_authenticated %}#}
-{#                    <a class="nav-link" href="{% url 'course:create' %}">Create course</a>#}
-{#                  </li>#}
-{#                  <li class="nav-item">#}
-{#                    <a class="nav-link" href="{% url 'student:create' %}">Create student</a>#}
-{#                  </li>#}
-{#                  <li class="nav-item">#}
-{#                    <a class="nav-link" href="{% url 'auction' %}">Auction</a>#}
-{#                  </li>#}
-{#              {% endif %}#}
+                <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+              {%  else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'registration' %}">Registration</a>
+              </li>
+              {% endif %}
             </ul>
-            <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" name="q" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            {%  if user.is_authenticated %}
-                <a class="btn btn-outline-success" href="{% url 'logout' %}" style="margin-left: 10px">Logout</a>
-                <a class="btn btn-success" href="{% url 'profile' %}" style="margin-left: 10px">Profile</a>
-            {%  else %}
-                <a class="btn btn-success" href="{% url 'login' %}" style="margin-left: 10px">Login</a>
-                <a class="btn btn-success" href="{% url 'registration' %}" style="margin-left: 10px">Registration</a>
-            {% endif %}
           </div>
-        </nav>
-
-        <div class="container">
-            <br>
-            {% block content %}{% endblock content %}
         </div>
+      </div>
+    </nav>
+
+    {% block content %}
+    {% endblock content %}
 
 
-{#        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-        {% block js %}{% endblock js %}
-    </body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {% block js %}{% endblock js %}
+  </body>
 </html>

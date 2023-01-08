@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  block css %}
+    <style>
+        h5 {
+            height: 30px;
+        }
+        .card-text {
+            height: 20px
+        }
+        .card-text-professor {
+            height: 20px
+        }
+    </style>
+{% endblock css %}
+
+{% block content %}
+    <div class="container">
+            <br>
+        <div class="row">
+            {% include 'includes/restaurant_list.html' %}
+        </div>
+        <div>
+            {% include 'includes/paginator.html' %}
+        </div>
+    </div>
+{%  endblock content %}
+
+{% block js %}
+{% endblock js %}

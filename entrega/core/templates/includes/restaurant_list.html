@@ -1,0 +1,56 @@
+ <style>
+    h5 {
+        height: 30px;
+    }
+    .card-text {
+        height: 20px
+    }
+    .card-text-professor {
+        height: 20px
+    }
+    .card-btn {
+        border-color: transparent;
+        background-color: transparent;
+    }
+    .action-btn {
+        background-color: #FF7336;
+        color: #F8F9FA !important;
+        text-underline-color: transparent;
+        border-radius: 30px;
+        padding: 10px 25px !important;
+        box-shadow: 3px 3px 5px #777;
+        width: 100px;
+        text-align: center;
+    }
+    .action-btn:hover {
+        background: #F9969E;
+        box-shadow: none;
+    }
+    .card-title {
+        color: black;
+    }
+    #card {
+        border-color: transparent;
+    }
+</style>
+
+
+{% for restaurant in restaurant_list %}
+    <div class="col-md-3 d-flex">
+        <div class="card text-white text-center bg-transparent" id="card" style="margin-bottom: 25px; width:400px; height: 450px">
+        {%  if restaurant.image %}
+{#        {% thumbnail course.image "350x210" crop="center" as im %}#}
+          <img src="{{ restaurant.image.url }}" class="card-img-top" alt="..." >
+{#        {% endthumbnail %}#}
+        {% endif %}
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold">{{ restaurant.name }}</h5>
+              {%  for tag in restaurant.tags.all %}
+                <button type="button" class="card-btn btn-sm" style="margin-bottom:20px" disabled>{{ tag.name }}</button>
+              {% endfor %}
+                <br>
+                <a href="{% url 'menu:review' %}?id={{ restaurant.id }}" class="action-btn" style="margin-top:20px">Open menu</a>
+          </div>
+        </div>
+    </div>
+{% endfor %}

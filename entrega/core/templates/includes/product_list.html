@@ -1,0 +1,36 @@
+{%  block content %}
+    <div class="container" style="background-color: yellow;min-height: 300px">
+        <br>
+        <div class="row">
+            <div class="container" style="margin-bottom: 20px">
+                <br>
+                {% for product in product_list %}
+                    <div class="row justify-content-center" id="main-course-row">
+                        <div class="col-md-2" style="margin-bottom: 20px; background-color: green; min-height: 200px; min-width: 200px">
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px; background-color: red; min-height: 200px;">
+                            <h5 style="margin-top: 10px; font-weight: bold">{{ product.name }}</h5>
+{#                            <div class="row" id="ingredient">#}
+{#                                <p class="card-text" style="margin-left: 15px;">Ingredients: </p>#}
+{#                                {%  for ingredient in product.ingredient.all %}#}
+{#                                    <div class="ingredient-row">#}
+{#                                        <p class="card-text"> {{ ingredient.name }},</p>#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+{#                            </div>#}
+                            <p class="card-text">{{ product.description }}</p>
+                        </div>
+                        <div class="col-md-2" id="price" style="margin-bottom:20px; background-color: blue; min-height: 200px; min-width: 200px">
+                            <h5 style="margin-top: 40px">{{ product.price }} $</h5>
+                            <br>
+                            <a href="#" class="product-btn">See more</a>
+                            <br>
+{#                            <a href="#" class="product-btn">Make an order</a>#}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{%  endblock content %}
