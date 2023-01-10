@@ -23,15 +23,13 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.IndexView.as_view(), name='home'),
-    path('profile', views.ProfileView.as_view(), name='profile'),
+    path('category/', views.CategoryView.as_view(), name="category"),
+    path('profile/', include(('core.urls.user_urls', 'core'), namespace='profile')),
     path('login', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
     path('registration/', views.RegistrationView.as_view(), name='registration'),
-    path('category/', views.CategoryView.as_view(), name="category"),
-    # path('restaurant/', include(('core.urls.restaurant_urls', 'core'), namespace='restaurant')),
-    path("restaurant/", include(('core.urls.menu_urls', 'core'), namespace='menu')),
-    # path("menu/", views.ProductView.as_view(), name='menu'),
-    path('section/', views.MenuView.as_view(), name="section"),
+    path("menu/", include(('core.urls.menu_urls', 'core'), namespace='menu')),
+    path("api/v1/", include(('api.urls', 'api'), namespace='api')),
 
 
 

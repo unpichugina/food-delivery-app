@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock css %}
 
 {% block content %}
-    <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
-        <table>
-            {% bootstrap_form form %}
-            <tr>
-                <td>
-                    <button type="submit" class="btn btn-success">Register</button>
-                </td>
-            </tr>
-        </table>
-    </form>
+    <div class="container" style="margin-top: 50px">
+        <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+            <table>
+                {% bootstrap_form form %}
+                <tr>
+                    <td>
+                        <button type="submit" class="action-btn">Save</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 {% endblock content %}

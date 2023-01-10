@@ -3,5 +3,5 @@ from core import views
 
 urlpatterns = [
     path('review/', views.ProductView.as_view(), name='review'),
-    path("<int:pk>/", views.MenuView.as_view(), name='menu'),
+    path("product/<int:pk>/", views.ProductDetailView.as_view(), name='detail'),
 ]

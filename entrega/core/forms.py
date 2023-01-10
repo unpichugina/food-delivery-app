@@ -1,8 +1,5 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.core.validators import MaxLengthValidator
-
-# from core.models import Category, Vendor, Tag, Product
 
 
 class RegistrationForm(forms.ModelForm):
@@ -31,3 +28,4 @@ class RegistrationForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password'])
         user.save()
         return user
+

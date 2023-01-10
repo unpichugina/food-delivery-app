@@ -1,27 +1,9 @@
 {% extends 'base.html' %}
+{% load core_tags %}
+{%  load static %}
 
 {% block css %}
-    <style>
-        #category {
-            display: inline-flex;
-            margin-left: auto;
-        }
-        #cuisine {
-            margin-left: 120px;
-        }
-        h5 {
-            height: 30px;
-        }
-        .card-text {
-            height: 20px
-        }
-        .card-text-professor {
-            height: 20px
-        }
-        .dropdown-divider {
-            border-color: green;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 {% endblock css %}
 
 {% block content %}
@@ -72,9 +54,10 @@
             <div class="row">
                 {% include 'includes/restaurant_list.html' %}
             </div>
-{#            <div>#}
-{#                {% include 'includes/paginator.html' %}#}
-{#            </div>#}
+
+            <div class="col-md-7 d-flex" style="margin-left:45px">
+                {% get_popular_products %}
+            </div>
         </div>
     </section>
 {% endblock content %}

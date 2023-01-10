@@ -1,18 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{%  block css %}
-    <style>
-        h5 {
-            height: 30px;
-        }
-        .card-text {
-            height: 20px
-        }
-        .card-text-professor {
-            height: 20px
-        }
-    </style>
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 {% endblock css %}
 
 {% block content %}
@@ -20,9 +10,6 @@
             <br>
         <div class="row">
             {% include 'includes/restaurant_list.html' %}
-        </div>
-        <div>
-            {% include 'includes/paginator.html' %}
         </div>
     </div>
 {%  endblock content %}

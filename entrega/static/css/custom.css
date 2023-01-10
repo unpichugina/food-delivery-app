@@ -1,0 +1,127 @@
+/**
+ ** BASE Navbar style
+ **/
+#logo {
+    margin-left: 40px;
+    margin-top: -5px;
+    margin-bottom: -6px;
+}
+#logo:hover {
+    border-bottom: 2px solid transparent;
+}
+#navbarNavDropdown {
+    margin-right: 40px;
+}
+.my_nav a {
+    margin-left: 30px;
+    border-bottom: 2px solid transparent;
+}
+.my_nav a:hover {
+    border-bottom: 2px solid #FF7336;
+}
+.active a {
+    border-bottom: 2px solid #FF7336;
+}
+.mrt a {
+    background: #FF7336;
+    color: #F8F9FA !important;
+    border-radius: 30px;
+    padding: 10px 25px !important;
+    box-shadow: 3px 3px 5px #777;
+    width: 100px;
+    text-align: center;
+}
+.mrt a:hover {
+    background: #F9969E;
+    box-shadow: none;
+}
+.mrt2 a {
+    background: #F9969E;
+    color: #F8F9FA !important;
+    border-radius: 30px;
+    padding: 10px 25px !important;
+    box-shadow: 3px 3px 5px #777;
+    width: 130px;
+    text-align: center;
+}
+.mrt2 a:hover {
+    background: #FF7336;
+    box-shadow: none;
+}
+
+
+/**
+ ** INDEX Cuisine category navbar style
+ **/
+
+#category {
+    display: inline-flex;
+    margin-left: auto;
+}
+#cuisine {
+    margin-left: 120px;
+}
+
+
+/**
+ ** RESTAURANT_LIST style
+ **/
+
+h5 {
+    height: 30px;
+}
+.card-btn {
+    border-color: transparent;
+    background-color: transparent;
+}
+.action-btn {
+    background-color: #FF7336;
+    color: #F8F9FA !important;
+    text-underline-color: transparent;
+    border-radius: 30px;
+    padding: 10px 25px !important;
+    box-shadow: 3px 3px 5px #777;
+    width: 100px;
+    text-align: center;
+
+}
+.action-btn:hover {
+    background: #F9969E;
+    box-shadow: none;
+}
+.card-title {
+    color: black;
+}
+#card {
+    border-color: transparent;
+}
+
+/**
+ ** MENU style
+ **/
+
+.new_nav ul li {
+    display: inline-block;
+    padding: 10px 40px 10px 0;
+    cursor: pointer;
+}
+#price {
+    text-align: center;
+}
+.hide {
+    position: absolute;
+    bottom: 0;
+    animation-name: a1;
+    animation-fill-mode: forwards;
+}
+@keyframes a1 {
+    to {
+        opacity: 0;
+        min-height: 0;
+        min-width: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+}
+
