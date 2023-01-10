@@ -1,16 +1,13 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, DetailView, FormView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, DetailView, FormView, ListView, UpdateView
 from core.forms import RegistrationForm
-from core.models import Restaurant, Category, Product, Menu
+from core.models import Restaurant, Category, Product, Menu, Image
 
 
 class IndexView(TemplateView):
     template_name = 'index.html'
-    # model = Restaurant
-    #
-    # def get_queryset(self):
-    #     return self.model.objects.get_prefetched()
 
     def get_context_data(self, *args, **kwargs):
         context = super(IndexView, self).get_context_data(*args, **kwargs)
@@ -34,6 +31,14 @@ class RegistrationView(FormView):
         return super(RegistrationView, self).form_valid(form)
 
 
+class EditAppUserView(UpdateView):
+    template_name = 'registration.html'
+    model = get_user_model()
+    form_class = RegistrationForm
+    success_url = reverse_lazy('home')
+    pk_url_kwarg = 'user_id'
+
+
 class RestaurantView(ListView):
     template_name = 'restaurant.html'
     model = Restaurant
@@ -43,7 +48,6 @@ class RestaurantView(ListView):
         return self.model.objects.get_prefetched()
 
 
-# если поменять здесь на индекс вью будет фильтр прямо на главной
 class CategoryView(RestaurantView):
 
     def get_queryset(self):
@@ -63,21 +67,18 @@ class ProductView(ListView):
             return self.model.objects.get_by_restaurant_id(restaurant_id)
         return super(ProductView, self).get_queryset()
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(ProductView, self).get_context_data(*args, **kwargs)
-        context['sections'] = Menu.objects.all()
-        return context
 
-
-class MenuView(ProductView):
+class ProductDetailView(DetailView):
+    template_name = 'includes/product.html'
+    model = Product
 
     def get_queryset(self):
-        section_id = self.request.GET.get('id', None)
-        if section_id:
-            return self.model.objects.get_by_section_id(section_id)
-        return super(MenuView, self).get_queryset()
+        product_id = self.request.GET.get('id', None)
+        if product_id:
+            return self.model.objects.get_by_product_id(product_id)
+        return super(ProductDetailView, self).get_queryset()
 
-
-
-
-
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context['images'] = Image.objects.all()
+        return context

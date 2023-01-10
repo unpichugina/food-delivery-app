@@ -52,7 +52,7 @@ class Restaurant(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to=restaurant_upload_path)
     tags = models.ManyToManyField("core.Tag")
-    # menu = models.ForeignKey('core.Menu', on_delete=models.SET_NULL, null=True)
+
     objects = RestaurantManager()
 
     def __str__(self):
@@ -69,23 +69,22 @@ class Menu(models.Model):
 class ProductManager(models.Manager):
 
     def get_prefetched(self):
-        return self.get_queryset().select_related('section').prefetch_related('ingredient')
+        return self.get_queryset().select_related('section', 'restaurant')
+
+    def get_by_restaurant_id(self, restaurant_id):
+        return self.get_prefetched().filter(restaurant=restaurant_id)
 
     def get_by_section_id(self, section_id):
         return self.get_queryset().filter(section=section_id)
-
-    def get_by_restaurant_id(self, restaurant_id):
-        return self.get_queryset().filter(restaurant=restaurant_id)
 
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.SET_NULL, null=True)
     section = models.ForeignKey(Menu, on_delete=models.SET_NULL, null=True)
-    image = models.ImageField(upload_to=product_upload_path)
+    ingredient = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(max_length=1000, default='')
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    ingredient = models.ManyToManyField("core.Ingredient", blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -96,11 +95,18 @@ class Product(models.Model):
         return self.name
 
 
-class Ingredient(models.Model):
-    name = models.CharField(max_length=255)
+class ImageManager(models.Manager):
 
-    def __str__(self):
-        return self.name
+    def get_by_product_id(self, product_id):
+        return self.get_queryset().filter(product=product_id)
+
+
+class Image (models.Model):
+    product = models.ForeignKey(Product, default=None, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=f'product/', blank=True)
+    default = models.BooleanField(default=False)
+
+    objects = ImageManager()
 
 
 class Tag(models.Model):

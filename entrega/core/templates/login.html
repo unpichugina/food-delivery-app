@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+{%  load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock css %}
+
 {% block content %}
 <div class="container">
             <br>
@@ -8,7 +14,7 @@
                     {% bootstrap_form form %}
                     <tr>
                         <td>
-                            <button type="submit" class="btn btn-success">Login</button>
+                            <button type="submit" class="action-btn">Login</button>
                         </td>
                     </tr>
                 </table>
