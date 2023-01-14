@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -74,9 +76,6 @@ class ProductManager(models.Manager):
     def get_by_restaurant_id(self, restaurant_id):
         return self.get_prefetched().filter(restaurant=restaurant_id)
 
-    def get_by_section_id(self, section_id):
-        return self.get_queryset().filter(section=section_id)
-
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -114,7 +113,3 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
-
-# class Tag(NameIt):
-#     pass
-

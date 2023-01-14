@@ -74,11 +74,12 @@
                 </div>
                 <br>
                 <a href="{% url 'profile:edit' user_id=user.id %}" class="action-btn" style="margin-top:20px">Edit</a>
-
+                <br>
+                <br>
+                <a href="{% url 'order:history' %}" class="action-btn" style="margin-top:50px">Order History</a>
             </form>
         </div>
     </section>
-
 {%  endblock content %}
 
 

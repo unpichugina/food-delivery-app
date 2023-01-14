@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, DetailView, FormView, ListView, UpdateView
 from core.forms import RegistrationForm
 from core.models import Restaurant, Category, Product, Menu, Image
+from order.models import Order, OrderItem
 
 
 class IndexView(TemplateView):
@@ -17,6 +18,12 @@ class IndexView(TemplateView):
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProfileView, self).get_context_data(*args, **kwargs)
+        context['orders'] = Order.objects.all()
+        context['details'] = OrderItem.objects.all()
+        return context
 
 
 class RegistrationView(FormView):

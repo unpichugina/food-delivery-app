@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 {% endblock css %}
 
+{% csrf_token %}
+
 {%  block content %}
+    {% csrf_token %}
     <br>
     <div class="container" style="background-color: red; margin-bottom: 20px">
         <br>
@@ -50,8 +53,13 @@
                     {{ product.price }} $
                 </div>
                 <br>
-                <a href="#" class="action-btn">Add to Cart</a>
+                <a href="#" class="action-btn ">Add to Cart</a>
+                <button type="submit" class="action-btn addCart" data-product-id="{{ product.id }}">Add to Cart</button>
             </div>
         </div>
     </div>
 {%  endblock content %}
+
+{% block js %}
+    <script src="{% static 'js/cart.js' %}"></script>
+{% endblock js %}
