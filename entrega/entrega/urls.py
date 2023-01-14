@@ -25,12 +25,10 @@ urlpatterns = [
     path("", views.IndexView.as_view(), name='home'),
     path('category/', views.CategoryView.as_view(), name="category"),
     path('profile/', include(('core.urls.user_urls', 'core'), namespace='profile')),
-    path('login', LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout', LogoutView.as_view(), name='logout'),
-    path('registration/', views.RegistrationView.as_view(), name='registration'),
-    path("menu/", include(('core.urls.menu_urls', 'core'), namespace='menu')),
-    path("api/v1/", include(('api.urls', 'api'), namespace='api')),
+    path("menu/", include(('core.urls.product_urls', 'core'), namespace='menu')),
+    # path("api/v1/", include(('api.urls', 'api'), namespace='api')),
 
-
+    path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
+    path('order/', include(('order.urls', 'order'), namespace='order')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

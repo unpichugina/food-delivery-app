@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'core',
     'api',
+    'core',
+    'cart',
+    'order',
+
 
     'rest_framework',
     'bootstrap4',
@@ -140,3 +143,8 @@ AUTH_USER_MODEL = 'core.AppUser'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
+
+
+STRIPE_PUBLIC_KEY = ''
+STRIPE_SECRET_KEY = ''
+STRIPE_WEBHOOK_SECRET = ''

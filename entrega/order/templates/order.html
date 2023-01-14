@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%  load static %}
+{% load bootstrap4 %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock css %}
+
+{% block title %}
+    <title>Order Details </title>
+{% endblock title %}
+
+
+{%  block content %}
+    <br>
+    <h3 class="card-title text-success font-weight-bold" style="text-align: center">Order Confirmation Form:</h3>
+    <div class="container">
+        <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+            <table>
+                {% bootstrap_form form %}
+                <tr>
+                    <td>
+                        <br>
+                        <button type="submit" class="action-btn">Confirm</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+{%  endblock content %}
