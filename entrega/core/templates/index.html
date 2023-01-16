@@ -32,6 +32,16 @@
         </div>
     </section>
 
+    <section style="background-color: #F8F9FA; height: 250px; padding-top: 50px; padding-bottom: 50px">
+        <div class="container" style="min-height: 150px; text-align: center; margin-top: 10px">
+            <br>
+            <h4 style="font-weight: bold; font-family: Chandas">Welcome to the Entrega Food Delivery!</h4>
+            <h5>Our app is a super fast way to order food from your favourite restaurants. Place your order and relax - we'll take care of the rest!
+                We deliver orders from the nearest cafes and shops at space speed to keep the dishes hot and the products fresh!</h5>
+                <hr style="margin-top: 95px">
+        </div>
+    </section>
+
     <section>
         <div class="container-fluid" id="category" style="background:#F8F9FA">
             {% for category in categories %}
@@ -50,7 +60,7 @@
 
     <section>
         <div class="container">
-            <h4 style="text-align: center; font-weight: bold; margin-top: 100px; margin-bottom: 30px">PRODUCTS YOU MAY LIKE</h4>
+            <h5 style="text-align: center; font-weight: bold;  margin-top: 120px; margin-bottom: 30px">PRODUCTS YOU MAY LIKE</h5>
             <br>
             <div class="row" style="margin-top: 30px">
                 {% get_popular_products %}

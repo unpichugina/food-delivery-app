@@ -26,7 +26,7 @@ urlpatterns = [
     path('category/', views.CategoryView.as_view(), name="category"),
     path('profile/', include(('core.urls.user_urls', 'core'), namespace='profile')),
     path("menu/", include(('core.urls.product_urls', 'core'), namespace='menu')),
-    # path("api/v1/", include(('api.urls', 'api'), namespace='api')),
+    path("nav/", include(('core.urls.nav_urls','core'), namespace='nav')),
 
     path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
     path('order/', include(('order.urls', 'order'), namespace='order')),
