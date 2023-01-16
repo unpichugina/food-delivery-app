@@ -13,7 +13,7 @@
 
 {%  block content %}
     <br>
-    <h3 class="card-title text-success font-weight-bold" style="text-align: center">Order Confirmation Form:</h3>
+    <h3 class="card-title font-weight-bold" style="text-align: center; color: #504A4A;">Order Confirmation Form:</h3>
     <div class="container">
         <form target="_blank" action="{% url 'payment:create-checkout-session' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}

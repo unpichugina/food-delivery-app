@@ -10,26 +10,26 @@
 {% endblock title %}
 
 {%  block content %}
-    <h1 style="text-align: center">Make an Order</h1>
-    <div class="container" style="background-color: yellow;min-height: 300px; position: relative">
+    <h3 style="text-align: center; margin-top: 20px">Make an Order</h3>
+    <div class="container" style="min-height: 300px; position: relative">
         <br>
         <div class="row">
             <div class="container" style="margin-bottom: 20px">
                 <br>
                 {% for item in cartitem_list %}
                         <div class="row product justify-content-center align-self-start {{ item.product.section }}">
-                            <div class="col-md-2" style="margin-bottom: 20px; background-color: green; min-height: 200px; min-width: 200px">
+                            <div class="col-md-2" style="margin-bottom: 20px; min-height: 200px; min-width: 200px">
                                 {% for image in item.product.images.all %}
                                     {% if image.default == True %}
                                         <img src="{{ image.image.url }}" class="card-img-top" alt="...">
                                     {% endif %}
                                 {% endfor %}
                             </div>
-                            <div class="col-md-3" style="margin-bottom: 20px; background-color: red; min-height: 200px;">
+                            <div class="col-md-3" style="margin-bottom: 20px; min-height: 200px;">
                                 <h3 style="margin-top: 50px; font-weight: bold">{{ item.product.name }}</h3>
                                 <h5 >Item price: {{ item.product.price }} $</h5>
                             </div>
-                            <div class="col-md-2" id="price" style="margin-bottom:20px; background-color: blue; min-height: 200px; min-width: 200px; text-align: left">
+                            <div class="col-md-2" id="price" style="margin-bottom:20px; min-height: 200px; min-width: 200px; text-align: left">
                                 <div class="row">
                                     <h5 style="margin-top: 55px">Quantity:</h5>
                                     <h5 style="margin-top: 55px; margin-left: 20px">{{ item.quantity }} pcs</h5>
@@ -49,7 +49,7 @@
                     {% endfor %}
                 </div>
                 <div class="row justify-content-end" style="margin-right: 250px">
-                    <a class="action-btn addOrder" style="width: 200px" href="{% url 'order:confirmation_new' %}">Make an Order</a>
+                    <a class="action-btn addOrder" style="width: 200px" href="{% url 'payment:create-checkout-session' %}">Make an Order</a>
                 </div>
                 {% else %}
                     <h5 style="text-align: center">No items in Cart now. Please, choose something delicious :)</h5>

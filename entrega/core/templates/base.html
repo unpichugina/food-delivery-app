@@ -66,9 +66,25 @@
       </div>
     </nav>
 
+
     {% block content %}
     {% endblock content %}
 
+    <footer id="footer" style="background-color: #313133; padding: 20px; margin-top: 300px;">
+        <div class="row text-center">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+               <p class="text-light" style="padding-top: 55px">© unpichugina, 2023</p>
+            </div>
+            <div class="col-md-4">
+                <a class="" id="logo" href="{% url 'home' %}">
+                    <img src="/media/foot_logo.png" width="269" height="130" class="d-inline-block align-top" alt="">
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

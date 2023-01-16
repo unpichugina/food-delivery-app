@@ -42,7 +42,7 @@
             <div class="col-md-4" style="margin-bottom: 20px; min-height: 400px; min-width: 500px">
                 <h1 style="font-weight: bold; margin-top: 100px">{{ product.name }}</h1>
                 <div class="ingredient-row">
-                    <p class="card-text">({{ product.ingredient}}, <span>)</span></p>
+                    <p class="card-text">({{ product.ingredient}}<span>)</span></p>
                 </div>
                 <div class="card-text" style="margin-top: 20px; min-height: 100px;">
                     {{ product.description }}
@@ -52,6 +52,9 @@
                 </div>
                 <br>
                 <button type="submit" class="action-btn addCart" style="width: 200px" data-product-id="{{ product.id }}">Add to Cart</button>
+{#                <div class="alert alert-warning" role="alert">#}
+{#                  Product added to Cart!<a href="#" class="alert-link"></a>#}
+{#                </div>#}
             </div>
         </div>
     </div>

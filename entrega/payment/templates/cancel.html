@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% load core_tags %}
+{%  load static %}
 
-<head>
-    <title>Checkout canceled</title>
-</head>
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock css %}
 
-<body>
+{% block title %}
+    <title>Oops, something went wrong..</title>
+{% endblock title %}
+
+{% block content %}
     <section>
-        <p>Forgot to add something to your cart?
-            <a href="{% url 'order:confirmation_new' %}">Try again</a>
-        </p>
+        <h1 style="text-align: center; font-weight: bold; margin-top: 160px">Oops, something went wrong..</h1>
+        <h1 style="text-align: center; font-weight: bold; margin-top: 50px">Forgot to add something to your cart?
+            <a href="{% url 'payment:create-checkout-session' %}"><h5 style="text-align: center; margin-top: 50px">Back to order</h5></a>
+        </h1>
     </section>
-</body>
+{% endblock content %}
 
-</html>

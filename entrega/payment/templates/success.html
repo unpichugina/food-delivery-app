@@ -1,17 +1,27 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% load core_tags %}
+{%  load static %}
 
-<head>
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock css %}
+
+{% block title %}
     <title>Thanks for your order!</title>
-</head>
+{% endblock title %}
 
-<body>
-    <section>
-        <p>
-            We appreciate your business!
-        </p>
-        <a href="#">Go to the main page</a>
-    </section>
-</body>
+{% block content %}
+<section>
+    <div class="container">
+        <h1 style="text-align: center; font-weight: bold; margin-top: 150px">Thank you for your purchase!</h1>
+        <h5 style="text-align: center; margin-top: 50px">Check our new products: </h5>
+        <div class="row " style="margin-top: 50px">
+            <div class="col-md-10 d-flex">
+                {% get_new_products %}
+            <div>
+        </div>
+    </div>
+</section>
 
-</html>
+
+{% endblock content %}
