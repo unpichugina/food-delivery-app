@@ -14,15 +14,13 @@
     <section class="order">
         <br>
         <h1 style="text-align: center">Order History:</h1>
-
             <div class="container" style="margin-top: 50px">
-                 <div class="row">
                     {% for item in order_list %}
-                            <div class="col-md-4" style="margin-bottom: 20px; background-color: red; min-height: 100px;">
+                            <div class="col-md-4" style="margin-bottom: 20px; min-height: 100px;">
                                 <h4 class="card-text">Order: {{ item.created_at }}</h4>
+                                <h5 class="card-text">Total: {{ item.total }}</h5>
                             </div>
                     {% endfor %}
-                 </div>
             </div>
     </section>
 {%  endblock content %}

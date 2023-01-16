@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load core_tags %}
+{%  load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock css %}
+
+{% block title %}
+    <title>Oops, something went wrong..</title>
+{% endblock title %}
+
+{% block content %}
+    <section>
+        <h1 style="text-align: center; font-weight: bold; margin-top: 160px">Oops, something went wrong..</h1>
+        <h1 style="text-align: center; font-weight: bold; margin-top: 50px">Forgot to add something to your cart?
+            <a href="{% url 'payment:create-checkout-session' %}"><h5 style="text-align: center; margin-top: 50px">Back to order</h5></a>
+        </h1>
+    </section>
+{% endblock content %}
+

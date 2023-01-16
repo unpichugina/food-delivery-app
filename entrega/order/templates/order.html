@@ -13,18 +13,31 @@
 
 {%  block content %}
     <br>
-    <h3 class="card-title text-success font-weight-bold" style="text-align: center">Order Confirmation Form:</h3>
+    <h3 class="card-title font-weight-bold" style="text-align: center; color: #504A4A;">Order Confirmation Form:</h3>
     <div class="container">
-        <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+        <form target="_blank" action="{% url 'payment:create-checkout-session' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <table>
                 {% bootstrap_form form %}
                 <tr>
                     <td>
                         <br>
-                        <button type="submit" class="action-btn">Confirm</button>
+                        <h5>Choose a payment method:</h5>
+                        <div class="container">
+                            <button type="submit" class="action-btn" name="pay_card" style="width: 200px" data-cart-id="{{ cart.id }}">Pay with Card</button>
+                            <button type="submit" class="action-btn addOrder" name="pay_cash" style="width: 200px" data-cart-id="{{ cart.id }}">Pay with Сash</button>
+                            <button type="submit" class="action-btn addOrder" name="pay_bonus" style="width: 200px" data-cart-id="{{ cart.id }}">Pay with Bonuses</button>
+                        </div>
+                        <br>
                     </td>
                 </tr>
             </table>
         </form>
     </div>
 {%  endblock content %}
+
+{% block js %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+{% endblock js %}

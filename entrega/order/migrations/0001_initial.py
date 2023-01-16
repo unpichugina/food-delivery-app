@@ -15,13 +15,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Payment',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-            ],
-        ),
-        migrations.CreateModel(
             name='Order',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -33,8 +26,7 @@ class Migration(migrations.Migration):
                 ('address', models.CharField(max_length=255)),
                 ('note', models.TextField(blank=True, default='')),
                 ('status', models.IntegerField(choices=[(0, 'In Progress'), (1, 'Fulfilled')], default=0)),
-                ('payment', models.ManyToManyField(to='order.payment')),
-                ('cart', models.ForeignKey('cart.Cart', on_delete=models.CASCADE, default='')),
+                ('total', models.DecimalField(decimal_places=2, default=0, max_digits=100)),
                 ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
             ],
         ),

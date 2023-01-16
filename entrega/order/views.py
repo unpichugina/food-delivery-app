@@ -1,28 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
-from django.views.generic import FormView, ListView
-from order.forms import OrderConfirmationForm
-from cart.models import Cart, CartItem
+from django.views.generic import ListView
 from order.models import Order, OrderItem
-
-
-class CreateOrder(FormView):
-    template_name = 'order.html'
-    form_class = OrderConfirmationForm
-    success_url = reverse_lazy('home')
-
-    def form_valid(self, form):
-        cart_item = CartItem.objects.all()
-        order = form.save()
-        for item in cart_item:
-            OrderItem.objects.create(order=order,
-                                     product=item.product,
-                                     price=item.price,
-                                     quantity=item.quantity,
-                                     total=item.total)
-        cart_item.delete()
-        form.save()
-        return super(CreateOrder, self).form_valid(form)
 
 
 class OrderHistoryView(LoginRequiredMixin, ListView):

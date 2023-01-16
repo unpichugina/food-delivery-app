@@ -23,7 +23,7 @@ class Order(models.Model):
     address = models.CharField(max_length=255)
     note = models.TextField(blank=True, default='')
     status = models.IntegerField(choices=order_status, default=0)
-    payment = models.ManyToManyField("order.Payment")
+    total = models.DecimalField(default=0, max_digits=100, decimal_places=2)
 
     objects = OrderManager()
 
@@ -36,14 +36,6 @@ class OrderItem(models.Model):
     product = models.ForeignKey('core.Product', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
-    total = models.DecimalField(default=0, max_digits=100, decimal_places=2)
 
     def __str__(self):
         return self.product.name
-
-
-class Payment(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name

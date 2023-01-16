@@ -10,6 +10,7 @@ class Cart(models.Model):
     email = models.EmailField()
     token = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     note = models.TextField(blank=True, default='')
+    total = models.DecimalField(default=0, max_digits=100, decimal_places=2)
 
     def __str__(self):
         return self.email
@@ -20,7 +21,7 @@ class CartItem(models.Model):
     product = models.ForeignKey('core.Product', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     price = models.DecimalField(default=0, max_digits=100, decimal_places=2)
-    total = models.DecimalField(default=0, max_digits=100, decimal_places=2)
+    # total = models.DecimalField(default=0, max_digits=100, decimal_places=2)
 
     def __str__(self):
         return self.product.name

@@ -24,6 +24,7 @@ class Migration(migrations.Migration):
                 ('token', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
                 ('note', models.TextField(blank=True, default='')),
                 ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('total', models.DecimalField(decimal_places=2, default=0, max_digits=100)),
             ],
         ),
         migrations.CreateModel(
@@ -33,6 +34,7 @@ class Migration(migrations.Migration):
                 ('quantity', models.PositiveIntegerField()),
                 ('cart', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cart.cart')),
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.product')),
+                ('price', models.DecimalField(decimal_places=2, default=0, max_digits=100)),
             ],
         ),
     ]

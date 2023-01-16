@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load core_tags %}
+{%  load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock css %}
+
+{% block title %}
+    <title>Thanks for your order!</title>
+{% endblock title %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <h1 style="text-align: center; font-weight: bold; margin-top: 150px">Thank you for your purchase!</h1>
+        <h5 style="text-align: center; margin-top: 50px">Check our new products: </h5>
+        <div class="row " style="margin-top: 50px">
+            <div class="col-md-10 d-flex">
+                {% get_new_products %}
+            <div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
