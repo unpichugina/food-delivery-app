@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'cart',
     'order',
+    'payment',
 
 
     'rest_framework',
@@ -145,6 +146,6 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
 
-STRIPE_PUBLIC_KEY = ''
-STRIPE_SECRET_KEY = ''
+STRIPE_PUBLIC_KEY = 'pk_test_51MQB1eBcDq40bal0mu1FHkzPikmRu8z1370w4HptPKAAOnpoFr7BZmvV4Yh5nllnxAkJwo6xgGdSffKKzE2umPf800VuU5ydus'
+STRIPE_SECRET_KEY = 'sk_test_51MQB1eBcDq40bal0pJG2uQL65jkkBdwYO9XVc1mKGp315TUZjQQTlcsLuuTeYphfxwApSNaqiHuQcPl9khfNOtbM00Ecl6FSJJ'
 STRIPE_WEBHOOK_SECRET = ''

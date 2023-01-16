@@ -44,12 +44,12 @@
                 {% if cartitem_list %}
                 <div class="row justify-content-end" style="margin-right: 250px">
                     <h5>Total amount: </h5>
-                    {% for item in cartitem_list %}
+                    {% for item in cart_details %}
                         <h5 style="margin-left: 20px">{{ item.total }} $</h5>
                     {% endfor %}
                 </div>
                 <div class="row justify-content-end" style="margin-right: 250px">
-                    <a class="action-btn" style="width: 200px" href="{% url 'order:confirmation_new' %}">Make an Order</a>
+                    <a class="action-btn addOrder" style="width: 200px" href="{% url 'order:confirmation_new' %}">Make an Order</a>
                 </div>
                 {% else %}
                     <h5 style="text-align: center">No items in Cart now. Please, choose something delicious :)</h5>
@@ -58,5 +58,7 @@
         </div>
     </div>
 {%  endblock content %}
+
+
 
 

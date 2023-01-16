@@ -7,7 +7,7 @@ class OrderConfirmationForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        exclude = ('created_at', 'user', 'status')
+        exclude = ('created_at', 'user', 'status', 'total')
         widgets = {'payment_method': forms.ModelChoiceField(queryset=Payment.objects.all()),
                    'note': forms.Textarea(attrs={'cols': 35, 'rows': 5}),
                    'email': forms.EmailInput,

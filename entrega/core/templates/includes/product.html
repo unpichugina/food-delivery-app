@@ -11,10 +11,10 @@
 {%  block content %}
     {% csrf_token %}
     <br>
-    <div class="container" style="background-color: red; margin-bottom: 20px">
+    <div class="container" style="margin-bottom: 20px">
         <br>
         <div class="row justify-content-center">
-            <div class="col-md-6" style="margin-bottom: 20px; background-color: green; ">
+            <div class="col-md-6" style="margin-bottom: 20px;">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         {% for image in product.images.all %}
@@ -39,22 +39,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6" style="margin-bottom: 20px; background-color: blue; min-height: 400px; min-width: 500px">
-                <h1 style="font-weight: bold; margin-top: 50px">{{ product.name }}</h1>
-                {%  for ingredient in product.ingredient.all %}
-                    <div class="ingredient-row">
-                        <p class="card-text">({{ ingredient.name }}, <span>)</span></p>
-                    </div>
-                {% endfor %}
-                <div class="card-text" style="margin-top: 20px; background-color: wheat; min-height: 150px;">
+            <div class="col-md-4" style="margin-bottom: 20px; min-height: 400px; min-width: 500px">
+                <h1 style="font-weight: bold; margin-top: 100px">{{ product.name }}</h1>
+                <div class="ingredient-row">
+                    <p class="card-text">({{ product.ingredient}}, <span>)</span></p>
+                </div>
+                <div class="card-text" style="margin-top: 20px; min-height: 100px;">
                     {{ product.description }}
                 </div>
-                <div class="card-text" style="margin-top: 20px; background-color: palevioletred; font-weight: bold; font-size: large">
+                <div class="card-text" style="margin-top: 20px; font-weight: bold; font-size: large">
                     {{ product.price }} $
                 </div>
                 <br>
-                <a href="#" class="action-btn ">Add to Cart</a>
-                <button type="submit" class="action-btn addCart" data-product-id="{{ product.id }}">Add to Cart</button>
+                <button type="submit" class="action-btn addCart" style="width: 200px" data-product-id="{{ product.id }}">Add to Cart</button>
             </div>
         </div>
     </div>

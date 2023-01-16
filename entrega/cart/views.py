@@ -29,9 +29,9 @@ class AddToCartView(View):
             cart_item.save()
         else:
             cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product, quantity=1, price=product.price)
-        cart_item.total = 0
+        cart.total = 0
         cart_qs = CartItem.objects.all()
         for item in cart_qs:
-            cart_item.total += item.price
-        cart_item.save()
+            cart.total += item.price
+        cart.save()
         return JsonResponse({'status': 'success'}, safe=False)

@@ -18,10 +18,16 @@ class CreateOrder(FormView):
             OrderItem.objects.create(order=order,
                                      product=item.product,
                                      price=item.price,
-                                     quantity=item.quantity,
-                                     total=item.total)
+                                     quantity=item.quantity)
         cart_item.delete()
-        form.save()
+        order.total = 0
+        cart = Cart.objects.all()
+        for item in cart:
+            order.total += item.total
+        order.save()
+        cart.delete()
+        # if order.payment == 'Cashless payment':
+        #     return super(CreateOrder, self).form_valid(form)
         return super(CreateOrder, self).form_valid(form)
 
 

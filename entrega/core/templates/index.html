@@ -49,13 +49,10 @@
     </section>
 
     <section>
-        <div class="container" style="margin-top: 80px">
+        <div class="container">
+            <h4 style="text-align: center; font-weight: bold; margin-top: 70px">PRODUCTS YOU MAY LIKE</h4>
             <br>
-            <div class="row">
-                {% include 'includes/restaurant_list.html' %}
-            </div>
-
-            <div class="col-md-7 d-flex" style="margin-left:45px">
+            <div class="row" style="margin-top: 30px">
                 {% get_popular_products %}
             </div>
         </div>

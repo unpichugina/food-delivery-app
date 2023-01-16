@@ -89,3 +89,8 @@ class ProductDetailView(DetailView):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         context['images'] = Image.objects.all()
         return context
+
+
+class PopularProductView(ListView):
+    template_name = 'popular_list.html'
+    model = Product
