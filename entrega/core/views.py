@@ -94,3 +94,20 @@ class ProductDetailView(DetailView):
 class PopularProductView(ListView):
     template_name = 'popular_list.html'
     model = Product
+
+
+class AboutUsView(TemplateView):
+    template_name = 'includes/reconstruction.html'
+    model = Product
+
+
+class ContactView(AboutUsView):
+    pass
+
+
+class DeliveryView(AboutUsView):
+    pass
+
+
+class PaymentView(AboutUsView):
+    pass

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load core_tags %}
+{%  load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock css %}
+
+{% block title %}
+    <title>Oops..</title>
+{% endblock title %}
+
+
+{% block content %}
+<section>
+    <div class="container">
+        <h1 style="text-align: center; font-weight: bold; margin-top: 150px">Sorry, this page is currently under reconstruction :(</h1>
+        <h5 style="text-align: center; margin-top: 50px">Better check our new products: </h5>
+        <div class="row " style="margin-top: 50px">
+            <div class="col-md-10 d-flex">
+                {% get_new_products %}
+            <div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

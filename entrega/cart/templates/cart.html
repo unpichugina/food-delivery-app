@@ -6,7 +6,7 @@
 {% endblock css %}
 
 {% block title %}
-    <title>Cart Details </title>
+    <title>Cart Details</title>
 {% endblock title %}
 
 {%  block content %}
@@ -52,7 +52,7 @@
                     <a class="action-btn addOrder" style="width: 200px" href="{% url 'payment:create-checkout-session' %}">Make an Order</a>
                 </div>
                 {% else %}
-                    <h5 style="text-align: center">No items in Cart now. Please, choose something delicious :)</h5>
+                    <h4 style="text-align: center; margin-top: 150px; min-height: 500px">No items in Cart now. Please, choose something delicious :)</h4>
                 {% endif %}
             </div>
         </div>
