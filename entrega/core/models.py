@@ -1,6 +1,3 @@
-import uuid
-
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -34,11 +31,7 @@ class NameIt(models.Model):
 
 
 class Category(NameIt):
-    name = models.CharField(max_length=255)
     image = models.ImageField(upload_to=category_upload_path, default='new_category.png')
-
-    def __str__(self):
-        return self.name
 
 
 class RestaurantManager(models.Manager):
@@ -50,23 +43,16 @@ class RestaurantManager(models.Manager):
         return self.get_prefetched().filter(category=category_id)
 
 
-class Restaurant(models.Model):
-    name = models.CharField(max_length=255)
+class Restaurant(NameIt):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to=restaurant_upload_path)
     tags = models.ManyToManyField("core.Tag")
 
     objects = RestaurantManager()
 
-    def __str__(self):
-        return self.name
 
-
-class Menu(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
+class Menu(NameIt):
+    pass
 
 
 class ProductManager(models.Manager):
@@ -78,8 +64,7 @@ class ProductManager(models.Manager):
         return self.get_prefetched().filter(restaurant=restaurant_id)
 
 
-class Product(models.Model):
-    name = models.CharField(max_length=255)
+class Product(NameIt):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.SET_NULL, null=True)
     section = models.ForeignKey(Menu, on_delete=models.SET_NULL, null=True)
     ingredient = models.CharField(max_length=255, blank=True, null=True)
@@ -91,9 +76,6 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = ProductManager()
-
-    def __str__(self):
-        return self.name
 
 
 class ImageManager(models.Manager):
@@ -110,8 +92,5 @@ class Image (models.Model):
     objects = ImageManager()
 
 
-class Tag(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
+class Tag(NameIt):
+    pass
