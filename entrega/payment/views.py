@@ -35,6 +35,7 @@ class CreateCheckoutSessionView(FormView):
         form = OrderConfirmationForm(request.POST)
         if form.is_valid():
             order = form.save()
+            order.user = request.user
         for item in cart_item:
             total_price += item.quantity * item.price
             OrderItem.objects.create(order=order,
@@ -84,7 +85,7 @@ class CreateCheckoutSessionView(FormView):
         user = self.request.user
         if user.is_authenticated:
             context['form'] = OrderConfirmationForm(
-                initial={'first_name': user.first_name, 'last_name': user.last_name,
+                initial={'username': user.username, 'first_name': user.first_name, 'last_name': user.last_name,
                          'email': user.email, 'phone': user.phone, 'address': user.address}
             )
         return context
