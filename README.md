@@ -5,14 +5,16 @@
 
 #### Application includes:
 
-- Administration page
-- Authorization and Registration Module
-- User account
-- Product selection page
-- Product page
-- Cart page
-- Checkout page
-- Payment system (Stripe payment system, payment with bonuses and cash).
+- :woman_technologist: :gear: Administration page
+- :closed_lock_with_key: Authorization and Registration Module
+- :sassy_man: User account
+- :bento: Product selection page
+- :croissant: Product page
+- :shopping_cart: Cart page
+- :shopping: Checkout page
+- :credit_card: Payment system (Stripe payment system, payment with bonuses and cash).
+
+***
 
 ![Main Page](https://github.com/unpichugina/food-delivery-app/blob/main/demonstration_img/main_page.png)
 
